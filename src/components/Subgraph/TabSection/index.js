@@ -48,17 +48,18 @@ const Overview = () =>{
         <>
             <Box sx={{display: "grid", rowGap: 2}}>
                 <Box>
-                    <Typography>Subgraph for Loopring zkRollup protocol v3 on the Ethereum mainnet.</Typography>
+                    <Typography>A fully decentralized protocol for automated liquidity provision on Ethereum.
+                    </Typography>
                 </Box>
                 <Box sx={{display: "flex", flexDirection: "column", alignContent: 'center', gap: 1 }}>
                     <Box sx={{display: 'inline-flex', gap: 1}}>
                         <LanguageIcon/>
-                        <Typography>loopring.io</Typography>
+                        <Typography>uniswap.org</Typography>
                     </Box>
 
                     <Box sx={{display: 'inline-flex', gap: 1}}>
                         <GitHubIcon/>
-                        <Typography>Loopring/loopring-subgraph-v2</Typography>
+                        <Typography>Uniswap/uniswap-v2-subgraph</Typography>
                     </Box>
 
                 </Box>
