@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from "./components/NavBar/NavBar";
+import {ThemeProvider} from "@mui/material";
+import {createCustomTheme} from "./theme";
+import { THEMES } from "./theme/constants";
+import Box from "@mui/material/Box";
+import MainLayout from "./layout";
+import Subgraph from "./pages/Subgraph";
+const theme = createCustomTheme(
+    {
+        direction: "ltr",
+        responsiveFontSizes: true,
+        roundedCorners: false,
+        theme: THEMES.DARK,
+    }
+)
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <ThemeProvider theme={theme}>
+            <MainLayout>
+                <Subgraph />
+            </MainLayout>
+        </ThemeProvider>
     </div>
   );
 }
