@@ -8,6 +8,7 @@ import uniswap from "../../../mock/uniswap/data";
 import LanguageIcon from '@mui/icons-material/Language';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Playground from "../Playground";
+import ValidationSection from "../ValidationSection";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -91,6 +92,7 @@ export default function TabSection() {
                     <Tab label="Indexers" {...a11yProps(1)} />
                     <Tab label="Curators" {...a11yProps(2)} />
                     <Tab label="Playground" {...a11yProps(3)} />
+                    <Tab label="Validation" {...a11yProps(4)} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
@@ -104,6 +106,9 @@ export default function TabSection() {
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Playground/>
+            </TabPanel>
+            <TabPanel value={value} index={4}>
+                <ValidationSection/>
             </TabPanel>
         </Box>
     );
