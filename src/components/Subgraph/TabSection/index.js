@@ -64,12 +64,12 @@ const Overview = () =>{
 
                 </Box>
                 <Box>
-                    <Typography variant={"subtitle1"} color={"text.secondary"}>DEPLOYMENT ID</Typography>
-                    <Typography >QmbJzTd7DCAg9aP57DgLsYbokrX82BjE1ToKedPMMTRCf4</Typography>
+                    <Typography variant={"subtitle1"} color={"text.secondary"}>TARGET CONTRACT ADDRESS</Typography>
+                    <Typography >0xd3d2e2692501a5c9ca623199d38826e513033a17</Typography>
                 </Box>
                 <Box>
-                    <Typography variant={"subtitle1"} color={"text.secondary"}>TOKEN ID</Typography>
-                    <Typography>430324—417542</Typography>
+                    <Typography variant={"subtitle1"} color={"text.secondary"}>ZK VERIFIER CONTRACT ADDRESS</Typography>
+                    <Typography>0xA304A4DfFB62681d67EDECe178ee067658a412a6 (sepolia)</Typography>
                 </Box>
             </Box>
         </>

@@ -30,15 +30,15 @@ const BasicSection = ({data}) =>{
                     <Grid item container direction={"col"} spacing={5}>
                         <Grid item>
                                 <Typography variant={"h7"} color={"text.secondary"}>INDEXED NETWORK</Typography>
-                                <Typography>Testnet</Typography>
+                                <Typography>Sepolia Testnet</Typography>
                         </Grid>
                         <Grid item>
-                                <Typography variant={"h7"}  color={"text.secondary"}>QUERY URL</Typography>
-                                <Typography>/hyper/id/2szAn4—ZbQxtt</Typography>
+                                <Typography variant={"h7"}  color={"text.secondary"}>TARGET CONTRACT ADDRESS</Typography>
+                                <Typography>0xd3d2e2-33a17</Typography>
                         </Grid>
                         <Grid item>
-                                <Typography variant={"h7"}  color={"text.secondary"}>SUBGRAPH ID</Typography>
-                                <Typography>2szAn4—ZbQxtt</Typography>
+                                <Typography variant={"h7"}  color={"text.secondary"}>ZK VERIFIER CONTRACT ADDRESS</Typography>
+                                <Typography>0xA304A4-412a6</Typography>
                         </Grid>
                     </Grid>
                 </Grid>

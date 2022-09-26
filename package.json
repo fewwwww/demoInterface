@@ -17,6 +17,8 @@
     "@uiw/codemirror-theme-okaidia": "^4.12.3",
     "@uiw/codemirror-themes": "^4.12.3",
     "@uiw/react-codemirror": "^4.12.3",
+    "axios": "^0.27.2",
+    "ethers": "^5.7.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

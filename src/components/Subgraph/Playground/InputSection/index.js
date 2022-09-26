@@ -2,27 +2,26 @@ import * as React from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import codemirrorTheme from "../../../../theme/codemirrorTheme";
+import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 
-const InputSection = () => {
+const InputSection = ({handleFetchBlockData}) => {
     const onChange = React.useCallback((value, viewUpdate) => {
         console.log('value:', value);
     }, []);
+
     return(
         <>
+            <PlayCircleFilledWhiteIcon style={{margin: "5px 5px", cursor: "pointer"}} onClick={handleFetchBlockData}/>
             <CodeMirror
-                value={`{
-  protocols(first: 5) {
-    id
-    inflation
-    inflationChange
-    maxEarningsClaimsRounds
-  }
-  transcoders(first: 5) {
-    id
-    activationRound
-    deactivationRound
-    lastActiveStakeUpdateRound
-  }
+                value={`{          
+    blocknum,
+    blockhash,
+    graphdata{
+        price,
+        contract,
+        decimals,
+    },
+    zkproof,
 }`}
                 height="100%"
                 // readOnly
