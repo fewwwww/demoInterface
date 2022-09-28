@@ -26,7 +26,7 @@ const InstantBlockData = () =>{
     });
 
     const subscribe = async () => {
-        let response = await fetch("http://100.89.211.30:3000/getcurrentprice");
+        let response = await fetch("http://54.248.170.145/getcurrentprice");
         if (response.status === 502) {
             // await subscribe();
         } else if (response.status !== 200) {
