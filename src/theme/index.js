@@ -178,7 +178,7 @@ const themesOptions = {
     },
     palette: {
       background: {
-        paper: "rgba(12,10,29,1.0)",
+        paper: "#0D0854",
         // default: "#171c24",
         // paper: "#222b36",
         default: "rgba(12,10,29,1.0)",

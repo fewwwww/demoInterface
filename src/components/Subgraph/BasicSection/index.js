@@ -1,6 +1,7 @@
 import {Grid, Paper, styled} from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import InstantBlockData from "./InstantBlockData";
 
 
 const BasicSection = ({data}) =>{
@@ -13,7 +14,7 @@ const BasicSection = ({data}) =>{
                         <img style={{height: "100%", weight: "100%"}} src={data.basic.logo} alt={"logo"}/>
                     </Box>
                 </Grid>
-                <Grid container direction={"row"} item md={10} lg={10} >
+                <Grid container direction={"row"} item md={6} lg={6} >
                     <Grid item>
                         <Typography color={"text.secondary"}>0xf87a—e0549a</Typography>
                     </Grid>
@@ -41,6 +42,11 @@ const BasicSection = ({data}) =>{
                                 <Typography>0xA304A4-412a6</Typography>
                         </Grid>
                     </Grid>
+                </Grid>
+                <Grid md={4} lg={4} item>
+                    <Box sx={{height: 160, weight: 160}}>
+                        <InstantBlockData/>
+                    </Box>
                 </Grid>
             </Grid>
 

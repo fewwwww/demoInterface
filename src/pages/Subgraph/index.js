@@ -8,7 +8,7 @@ const data = uniswap();
 
 const Subgraph = () =>{
     return <>
-        <Box sx={{my: 10,display:"grid", rowGap: 10}}>
+        <Box sx={{my: 10,display:"grid", rowGap: 15}}>
             <Box>
                 <BasicSection data={data}/>
             </Box>

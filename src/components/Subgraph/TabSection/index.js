@@ -85,12 +85,12 @@ export default function TabSection() {
     };
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%', height: "auto" }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Overview" {...a11yProps(0)} />
                     <Tab label="Indexers" {...a11yProps(1)} />
-                    <Tab label="Curators" {...a11yProps(2)} />
+                    <Tab label="ZK Graph" {...a11yProps(2)} />
                     <Tab label="Playground" {...a11yProps(3)} />
                     <Tab label="Validation" {...a11yProps(4)} />
                 </Tabs>
@@ -102,7 +102,7 @@ export default function TabSection() {
                 Indexers developing...
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Curators developing...
+                ZK Graph developing...
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Playground/>

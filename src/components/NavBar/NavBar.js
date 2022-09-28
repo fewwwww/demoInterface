@@ -20,7 +20,7 @@ function HideOnScroll(props) {
     });
 
     return (
-        <Slide appear={false} direction="down" in={!trigger}>
+        <Slide appear={true} direction="down" in={!trigger}>
             {children}
         </Slide>
     );
@@ -37,7 +37,7 @@ export default function NavBar(props) {
             <CssBaseline />
             <HideOnScroll {...props}>
                 <AppBar color={"transparent"}  elevation={0}>
-                    <Container maxwidth={"lg"} sx={{mt: 4}}>
+                    <Container maxwidth={"lg"} sx={{mt: 2, mb:2}}>
                         <Toolbar disableGutters>
                             <img style={{height: '40px', width: '40px'}} src={hyperOracle} alt={"hyper_oracle"}/>
                             <Typography

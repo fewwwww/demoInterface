@@ -14,7 +14,7 @@ const Playground = () => {
 
     const handleFetchBlockData = () =>{
             setVerifiedResult({status: "UNSENT"});
-            axios.get('http://100.112.62.89:3000/getcurrentprice')
+            axios.get('http://100.89.211.30:3000/getcurrentprice')
             .then(function (response) {
                 if(response.status === 200){
                     const data = {

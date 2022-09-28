@@ -21,14 +21,14 @@ const useStyles = makeStyles({
         width: 180,
         padding: '0 30px',
         '&:hover': {
-            boxShadow: '0 0 16px 0 rgb(111 76 255 / 88%)',
+            boxShadow: '0 0 16px 0 #0575E6',
         }
     },
 });
 
 const ConnectButton = () =>{
     const classes = useStyles();
-    return <Button style={{textTransform: "unset", border: "2px solid #6953d2", fontWeight: 'bold'}} color="inherit" className={classes.root}>Connect</Button>;
+    return <Button style={{textTransform: "unset", border: "2px solid #0575E6", fontWeight: 'bold'}} color="inherit" className={classes.root}>Connect</Button>;
 
 }
 
