@@ -90,7 +90,7 @@ export default function TabSection() {
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Overview" {...a11yProps(0)} />
                     <Tab label="Indexers" {...a11yProps(1)} />
-                    <Tab label="ZK Graph" {...a11yProps(2)} />
+                    <Tab  label="zkGraphs" {...a11yProps(2)} />
                     <Tab label="Playground" {...a11yProps(3)} />
                     <Tab label="Validation" {...a11yProps(4)} />
                 </Tabs>
@@ -102,7 +102,7 @@ export default function TabSection() {
                 Indexers developing...
             </TabPanel>
             <TabPanel value={value} index={2}>
-                ZK Graph developing...
+                zkGraphs developing...
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Playground/>

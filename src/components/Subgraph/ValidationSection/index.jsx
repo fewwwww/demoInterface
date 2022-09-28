@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {Button, LinearProgress, TextField} from "@mui/material";
 import {useState} from "react";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import GavelIcon from '@mui/icons-material/Gavel';
 import {ethers} from "ethers";
 import abi from "../../../utils/zk/zkabi.json";
 import {uint2hexbytes32} from "../../../utils/priceToByte";

@@ -80,7 +80,7 @@ export const codemirrorTheme2 = createTheme({
 export const codemirrorTheme1 = createTheme({
     theme: 'light',
     settings: {
-        background: 'transparent',
+        background: '#000000',
         foreground: '#94ff41',
         caret: '#5d00ff',
         selection: '#036dd626',
