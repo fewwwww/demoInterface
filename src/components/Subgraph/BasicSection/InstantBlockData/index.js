@@ -5,9 +5,12 @@ import {javascript} from "@codemirror/lang-javascript";
 import {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import useRegularPoll from "../../../../hooks/subscriber/regularPoll";
+import useEthStatus from "../../../../hooks/aboutEthStatus/useEthStatus";
+import {FETCH_DATA} from "../../../../redux/middlewares/api";
 
 const InstantBlockData = () =>{
-    const {getPolledData} = useRegularPoll();
+
+    const {ethStatusData} = useEthStatus(FETCH_DATA);
 
     const onChange = React.useCallback((value, viewUpdate) => {
         console.log('value:', value);
@@ -25,12 +28,12 @@ const InstantBlockData = () =>{
                 value={`
 -------- Real time ETH status --------
 
-[+] blocknum: ${getPolledData.blocknum}
-[+] blockhash: ${getPolledData.blockhash}
-[+] zkproof: ${getPolledData.zkproof}
-[+] price: ${getPolledData.price}
-[+] decimals: ${getPolledData.decimals}
-[+] contract: ${getPolledData.contract}
+[+] Block Number: ${ethStatusData.blockNumber}
+[+] Block Hash: ${ethStatusData.blockHash}
+[+] zkProof: ${ethStatusData.zkProof}
+[+] Price: ${ethStatusData.price}
+[+] Decimals: ${ethStatusData.decimals}
+[+] Contract: ${ethStatusData.contract}
 `}
                 height="100%"
                 readOnly

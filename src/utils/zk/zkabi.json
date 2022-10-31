@@ -5,11 +5,41 @@
       "type": "constructor"
     },
     {
+      "anonymous": false,
       "inputs": [
         {
+          "indexed": true,
           "internalType": "uint256",
-          "name": "price",
+          "name": "blockNumber",
           "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "messages",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "zkProof",
+          "type": "bytes32"
+        }
+      ],
+      "name": "NewMessage",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "blockHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "msg",
+          "type": "bytes32"
         }
       ],
       "name": "generate_proof",
@@ -26,17 +56,73 @@
     {
       "inputs": [
         {
+          "internalType": "uint256",
+          "name": "blockNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "get_price_by_block",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastestBlockNumber",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "messages",
+      "outputs": [
+        {
           "internalType": "bytes32",
-          "name": "price",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "blockHash",
           "type": "bytes32"
         },
         {
           "internalType": "bytes32",
-          "name": "zkproof",
+          "name": "msg",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "zkProof",
           "type": "bytes32"
         }
       ],
-      "name": "zkverify",
+      "name": "verify",
       "outputs": [
         {
           "internalType": "bool",
@@ -50,22 +136,17 @@
     {
       "inputs": [
         {
-          "internalType": "uint256",
-          "name": "blockNumber",
-          "type": "uint256"
-        },
-        {
           "internalType": "bytes32",
-          "name": "price",
+          "name": "msg",
           "type": "bytes32"
         },
         {
           "internalType": "bytes32",
-          "name": "zkproof",
+          "name": "zkProof",
           "type": "bytes32"
         }
       ],
-      "name": "zkverify_with_blocknumber",
+      "name": "zkverify",
       "outputs": [
         {
           "internalType": "bool",
@@ -73,7 +154,41 @@
           "type": "bool"
         }
       ],
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "blockHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "msg",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "zkProof",
+          "type": "bytes32"
+        }
+      ],
+      "name": "zkverify_with_block",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
       "type": "function"
     }
   ]
