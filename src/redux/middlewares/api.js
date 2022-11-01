@@ -1,8 +1,11 @@
 import { get, post } from "../../utils/request";
+import {ethers} from "ethers";
+import abi from "../../utils/zk/zkabi.json";
 
 //经过中间件处理的action所具有的标识
 export const FETCH_DATA = "FETCH_DATA";
 export const POST_DATA = "POST_DATA";
+export const VIEW_CONTRACT = "VIEW_CONTRACT";
 
 export const fetchAPI = (store) => (next) => (action) => {
   const callAPI = action[FETCH_DATA];
@@ -111,6 +114,44 @@ export const postAPI = (store) => (next) => (action) => {
   );
 };
 
+export const viewContract = (store) => (next) => (action) => {
+  const callAPI = action[VIEW_CONTRACT];
+  if (typeof callAPI === "undefined") {
+    return next(action);
+  }
+  const { contractAddress, abi, provider, types, funcName, params} = callAPI;
+
+  const actionWith = (data) => {
+    const finalAction = { ...action, ...data };
+    delete finalAction[VIEW_CONTRACT];
+    return finalAction;
+  };
+
+  const [requestType, successType, failureType] = types;
+
+  next(actionWith({ type: requestType }));
+
+  return contractCreator(contractAddress, abi, provider,funcName, params)
+      .then(
+      (response) =>
+          next(
+              actionWith({
+                type: successType,
+                response,
+                message: "Succeed",
+              })
+          ),
+      (error) =>
+          next(
+              actionWith({
+                type: failureType,
+                message: error.message || "Failed Request",
+                error: error.reason || "Failed Request",
+              })
+          )
+  );
+}
+
 //执行网络请求
 const fetchData = (endpoint, schema) => {
   console.log(endpoint);
@@ -177,3 +218,8 @@ const normalizeData = (rawAPIData, schema) => {
     message: data.message,
   };
 };
+
+const contractCreator = async (contractAddress, abi, provider,funcName, params) =>{
+  const contract = new ethers.Contract(contractAddress, abi, ethers.getDefaultProvider(provider));
+  return await contract[funcName](...params);
+}

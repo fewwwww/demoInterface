@@ -13,7 +13,7 @@ const InstantBlockData = () =>{
     const {ethStatusData} = useEthStatus(FETCH_DATA);
 
     const onChange = React.useCallback((value, viewUpdate) => {
-        console.log('value:', value);
+        // console.log('value:', value);
     }, []);
 
     return(

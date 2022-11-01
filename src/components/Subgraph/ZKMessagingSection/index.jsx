@@ -3,20 +3,17 @@ import Typography from "@mui/material/Typography";
 import {Button, Divider} from "@mui/material";
 import abi from "../../../utils/zk/zkabi.json";
 import {ethers} from "ethers";
-
-const DEPLOYED_CONTRACT_ADDRESS = "0xb189Ff0279835DC0ce7b9FC450889369C4760fce";
+import useZkMessaging from "../../../hooks/aboutZkMessaging/useZkMessaging";
+import useEthStatus from "../../../hooks/aboutEthStatus/useEthStatus";
+import {useEffect} from "react";
 
 const ZKMessagingSection = () =>{
-    const contractConnector = () =>{
-        let provider = ethers.getDefaultProvider("https://cronos-testnet-3.crypto.org:8545");
-        return new ethers.Contract(DEPLOYED_CONTRACT_ADDRESS, abi, provider);
-    }
+    const {ethStatusData} = useEthStatus();
+    const {zkMessagingFetcher } = useZkMessaging();
 
-    const handleClick = async () =>{
-        const connector = contractConnector();
-        const result = await connector.get_price_by_block(15837070);
-        console.log(result);
-    }
+    useEffect(()=>{
+        zkMessagingFetcher();
+    }, [ethStatusData])
 
 
     return(<>
@@ -40,8 +37,7 @@ const ZKMessagingSection = () =>{
                 <Typography>Source Contract: </Typography>
                 <Typography>Price on source chain:  </Typography>
             </Box>
-            <Divider/>
-            <Button onClick={handleClick}>Info</Button>
+
         </Box>
 
     </>)

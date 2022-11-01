@@ -4,17 +4,23 @@
 import {types} from "../ethStatus";
 
 const initialState = {
-  blockNumber: 0,
-  blockHash: "0x",
-  zkProof: "0x",
-  price: 0,
-  decimals: 3,
-  contract: "UniswapV2(UNI-WETH)"
+    source: {
+        ChainName: "",
+        Height: 0,
+        SourceContract: "0x",
+        price: 0
+    },
+    destination: {
+        ChainName: "",
+        Height: 0,
+        SourceContract: "0x",
+        price: 0
+    }
 };
 
 export const schema = {
-  name: "ethStatus",
-  id: "id",
+    name: "zkMessaging",
+    id: "id",
 };
 
 /***********************************************************************************************************************
@@ -22,20 +28,10 @@ export const schema = {
  * *********************************************************************************************************************/
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case types.FETCH_ETH_STATUS.success():
-      return {
-        ...state,
-        blockNumber: action.response.blocknum,
-        blockHash: action.response.blockhash,
-        zkProof: action.response.zkproof,
-        price: action.response.graphdata["price_weth-uni"],
-        decimals: action.response.graphdata.decimals,
-        contract:  action.response.graphdata.contract,
-      };
-    default:
-      return state;
-  }
+    switch (action.type) {
+        default:
+            return state;
+    }
 };
 
 export default reducer;
@@ -43,6 +39,6 @@ export default reducer;
 /***********************************************************************************************************************
  * 													SELECT  														   *
  * *********************************************************************************************************************/
-export const getEthStatus = (state) => {
-  return state.entities.ethStatus;
+export const getZkMessaging = (state) => {
+    return state.entities.ethStatus;
 };

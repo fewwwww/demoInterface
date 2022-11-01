@@ -1,6 +1,6 @@
 const initialState = {
   error: null,
-  code: null,
+  message: null,
 };
 
 export const types = {
@@ -14,11 +14,11 @@ export const actions = {
 };
 
 const reducer = (state = initialState, action) => {
-  const { type, error, code } = action;
+  const { type, error, message } = action;
   if (type === types.CLEAR_ERROR) {
-    return { ...state, error: null, code: null };
+    return { ...state, error: null, message: null };
   } else if (error) {
-    return { ...state, error: error, code: code };
+    return { ...state, error: error, message: message };
   }
   return state;
 };
