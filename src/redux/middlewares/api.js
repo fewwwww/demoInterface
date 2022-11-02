@@ -137,7 +137,7 @@ export const viewContract = (store) => (next) => (action) => {
           next(
               actionWith({
                 type: successType,
-                response,
+                response, params,
                 message: "Succeed",
               })
           ),
@@ -219,7 +219,7 @@ const normalizeData = (rawAPIData, schema) => {
   };
 };
 
-const contractCreator = async (contractAddress, abi, provider,funcName, params) =>{
+const contractCreator = async (contractAddress, abi, provider,funcName, params=[]) =>{
   const contract = new ethers.Contract(contractAddress, abi, ethers.getDefaultProvider(provider));
   return await contract[funcName](...params);
 }
