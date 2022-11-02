@@ -9,7 +9,7 @@ import {useEffect} from "react";
 
 const ZKMessagingSection = () =>{
     const {ethStatusData} = useEthStatus();
-    const {zkMessagingFetcher } = useZkMessaging();
+    const {zkMessagingFetcher, zkMessagingData} = useZkMessaging();
 
     useEffect(()=>{
         zkMessagingFetcher();
@@ -18,24 +18,24 @@ const ZKMessagingSection = () =>{
 
     return(<>
         <Box>
-            <Box sx={{marginBottom: 10}}>
+            <Box >
                 <Typography variant={"h3"}>
                     Source Blockchain
                 </Typography>
-                <Typography>Chain Name: Ethereum</Typography>
-                <Typography>Height: 123456</Typography>
-                <Typography>Source Contract: </Typography>
-                <Typography>Price on source chain:  </Typography>
+                <Typography>Chain Name: {zkMessagingData.source.ChainName}</Typography>
+                <Typography>Height: {zkMessagingData.source.Height}</Typography>
+                <Typography>Source Contract: {zkMessagingData.source.SourceContract}</Typography>
+                <Typography>Price on source chain: {zkMessagingData.source.Price} </Typography>
             </Box>
-            <Divider/>
+            <Divider sx={{marginTop:5, marginBottom: 5}}/>
             <Box>
                 <Typography variant={"h3"}>
                     Destination Blockchain
                 </Typography>
-                <Typography>Chain Name: EVMOS</Typography>
-                <Typography>Height: 43112</Typography>
-                <Typography>Source Contract: </Typography>
-                <Typography>Price on source chain:  </Typography>
+                <Typography>Chain Name: {zkMessagingData.destination.ChainName}</Typography>
+                <Typography>Height: {zkMessagingData.destination.Height}</Typography>
+                <Typography>Source Contract: {zkMessagingData.destination.SourceContract}</Typography>
+                <Typography>Price on Destination chain: {zkMessagingData.destination.Price} </Typography>
             </Box>
 
         </Box>
