@@ -2,6 +2,7 @@
  * 													SCHEMA 														   *
  * *********************************************************************************************************************/
 import zkMessaging, {types} from "../zkMessaging";
+import {types as ethStatusTypes} from "../ethStatus";
 
 const initialState = {
     source: {
@@ -29,14 +30,20 @@ export const schema = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case ethStatusTypes.FETCH_ETH_STATUS.success():
+            console.log("ethStatusTypes.FETCH_ETH_STATUS.success: ", action)
+            return {
+                ...state,
+                source: {
+                    ...state.source,
+                    Price: action.response.graphdata["price_weth-uni"],
+                    Height: action.response.blocknum,
+                },
+            }
         case types.FETCH_ZK_MESSAGING.success():
             console.log(action.response, action.response.toNumber());
             return {
-                source: {
-                    ...state.source,
-                    Price: action.response.toNumber()/1000,
-                    Height: action.params[0]
-                },
+                ...state,
                 destination: {
                     ...state.destination,
                     Price: action.response.toNumber()/1000,
