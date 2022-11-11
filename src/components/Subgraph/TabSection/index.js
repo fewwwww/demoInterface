@@ -95,7 +95,7 @@ export default function TabSection() {
                     <Tab label="Playground" {...a11yProps(3)} />
                     <Tab label="Validation" {...a11yProps(4)} />
                     {/*<Tab label="ZKMessaging" {...a11yProps(5)} />*/}
-                    <Tab label="Automation" {...a11yProps(6)} />
+                    <Tab label="Automation" {...a11yProps(5)} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
@@ -116,8 +116,8 @@ export default function TabSection() {
             {/*<TabPanel value={value} index={5}>*/}
             {/*    <ZKMessagingSection/>*/}
             {/*</TabPanel>*/}
-            <TabPanel value={value} index={6}>
-               Automation developing
+            <TabPanel value={value} index={5}>
+               Automation developing...
             </TabPanel>
         </Box>
     );
