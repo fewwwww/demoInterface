@@ -71,7 +71,7 @@ const Overview = () =>{
                 </Box>
                 <Box>
                     <Typography variant={"subtitle1"} color={"text.secondary"}>ZK VERIFIER CONTRACT ADDRESS</Typography>
-                    <Typography>0xA304A4DfFB62681d67EDECe178ee067658a412a6 (sepolia)</Typography>
+                    <Typography>0xe7651cd1d7C78b149f6007C59Ed59ccC42867807 (sepolia)</Typography>
                 </Box>
             </Box>
         </>
@@ -94,7 +94,7 @@ export default function TabSection() {
                     <Tab  label="Proof" {...a11yProps(2)} />
                     <Tab label="Playground" {...a11yProps(3)} />
                     <Tab label="Validation" {...a11yProps(4)} />
-                    <Tab label="ZKMessaging" {...a11yProps(5)} />
+                    {/*<Tab label="ZKMessaging" {...a11yProps(5)} />*/}
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
@@ -112,9 +112,9 @@ export default function TabSection() {
             <TabPanel value={value} index={4}>
                 <ValidationSection/>
             </TabPanel>
-            <TabPanel value={value} index={5}>
-                <ZKMessagingSection/>
-            </TabPanel>
+            {/*<TabPanel value={value} index={5}>*/}
+            {/*    <ZKMessagingSection/>*/}
+            {/*</TabPanel>*/}
         </Box>
     );
 }

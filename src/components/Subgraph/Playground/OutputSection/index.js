@@ -11,7 +11,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Box from "@mui/material/Box";
 import {LinearProgress} from "@mui/material";
 
-const DEPLOYED_CONTRACT_ADDRESS = "0xA304A4DfFB62681d67EDECe178ee067658a412a6";
+const DEPLOYED_CONTRACT_ADDRESS = "0xe7651cd1d7C78b149f6007C59Ed59ccC42867807";
 
 const OutputSection = ({output, setVerifiedResult, verifiedResult}) => {
 
@@ -31,6 +31,7 @@ const OutputSection = ({output, setVerifiedResult, verifiedResult}) => {
         setVerifiedResult({status: "PENDING"})
         const blocknum = output.data.blocknum;
         const zkproof = output.data.zkproof;
+        const blockhash = output.data.blockhash;
         const price = () => {
             let p = output.data.graphdata.priceWethUni;
             let decimals = output.data.graphdata.decimals;
@@ -43,7 +44,7 @@ const OutputSection = ({output, setVerifiedResult, verifiedResult}) => {
         const priceByte = uint2hexbytes32(price());
         const contract = contractConnector();
         console.log(`price: ${priceByte}, blocknum: ${blocknum}, zkproof: ${zkproof}`)
-        const zkVerify = await contract.zkverify_with_blocknumber(blocknum, priceByte, zkproof);
+        const zkVerify = await contract.verify(blockhash, priceByte, zkproof);
         console.log(zkVerify)
 
         if(zkVerify){
@@ -79,14 +80,13 @@ const OutputSection = ({output, setVerifiedResult, verifiedResult}) => {
     "graphdata":{
         "price":${output.data.graphdata.priceWethUni},
         "contract":${output.data.graphdata.contract},
-        "decimals":${output.data.graphdata.decimals},
+        "decimals":${output.data.graphdata.decimals}
     },
-    "zkproof":${output.data.zkproof},
+    "zkproof":${output.data.zkproof}
   }            
 }
 `:""}
                 height="100%"
-                readOnly
                 theme={codemirrorTheme}
                 extensions={[javascript({ jsx: true })]}
                 onChange={onChange}

@@ -6,13 +6,14 @@ import abi from "../../../utils/zk/zkabi.json";
 import {uint2hexbytes32} from "../../../utils/priceToByte";
 import Box from "@mui/material/Box";
 
-const DEPLOYED_CONTRACT_ADDRESS = "0xA304A4DfFB62681d67EDECe178ee067658a412a6";
+const DEPLOYED_CONTRACT_ADDRESS = "0xe7651cd1d7C78b149f6007C59Ed59ccC42867807";
 const ValidationSection = () =>{
 
 
     const [price, setPrice] = useState(0);
     const [priceDecimals, setPriceDecimals] = useState(0)
     const [blocknum, setBlocknum] = useState("");
+    const [blockhash, setBlockhash] = useState("");
     const [zkproof, setZkproof] = useState("");
     const [verifiedResult, setVerifiedResult] = useState({status: "UNSENT"})
     const contractConnector = () =>{
@@ -32,7 +33,7 @@ const ValidationSection = () =>{
         setVerifiedResult({status: "PENDING"})
         const getP = () => {
             let p = price;
-            let decimals = priceDecimals;
+            let decimals = 3;
             while( decimals > 0){
                 p *= 10;
                 decimals --;
@@ -41,8 +42,8 @@ const ValidationSection = () =>{
         }
         const priceByte = uint2hexbytes32(getP());
         const contract = contractConnector();
-        console.log(`price: ${priceByte}, blocknum: ${blocknum}, zkproof: ${zkproof}`)
-        const zkVerify = await contract.zkverify_with_blocknumber(blocknum, priceByte, zkproof);
+        console.log(`price: ${priceByte}, blocknum: ${blocknum}, zkproof: ${zkproof}, block hash: ${blockhash}`)
+        const zkVerify = await contract.verify(blockhash, priceByte, zkproof);
         console.log(zkVerify)
 
         if(zkVerify){
@@ -62,8 +63,9 @@ const ValidationSection = () =>{
             <LinearProgress />
         </Box>}
         <TextField value={price} onChange={(e)=>{setPrice(e.target.value), setVerifiedResult({status: "UNSENT"})}} type="number" style={{margin: "5px"}} id="outlined-basic" label="Price" variant="outlined"/>
-        <TextField value={priceDecimals} onChange={(e)=>{setPriceDecimals(e.target.value), setVerifiedResult({status: "UNSENT"})}} type="number" style={{margin: "5px"}} id="outlined-basic" label="Decimals" variant="outlined" />
-        <TextField value={blocknum} onChange={(e)=>{setBlocknum(e.target.value), setVerifiedResult({status: "UNSENT"})}} style={{margin: "5px"}} type="number" id="outlined-basic" label="Block Number" variant="outlined" />
+        {/*<TextField value={priceDecimals} onChange={(e)=>{setPriceDecimals(e.target.value), setVerifiedResult({status: "UNSENT"})}} type="number" style={{margin: "5px"}} id="outlined-basic" label="Decimals" variant="outlined" />*/}
+        {/*<TextField value={blocknum} onChange={(e)=>{setBlocknum(e.target.value), setVerifiedResult({status: "UNSENT"})}} style={{margin: "5px"}} type="number" id="outlined-basic" label="Block Number" variant="outlined" />*/}
+        <TextField value={blockhash} onChange={(e)=>{setBlockhash(e.target.value), setVerifiedResult({status: "UNSENT"})}} style={{margin: "5px"}} id="outlined-basic" label="Block Hash" variant="outlined" />
         <TextField value={zkproof} onChange={(e)=>{setZkproof(e.target.value), setVerifiedResult({status: "UNSENT"})}}  style={{margin: "5px"}} id="outlined-basic" label="ZkProof" variant="outlined" />
         {/*<Button onClick={handleValidate} style={{margin: "5px", width: "100px", height: "55px"}} variant="outlined">Validate</Button>*/}
         <VerifyIcon/>
