@@ -87,6 +87,7 @@ const OutputSection = ({output, setVerifiedResult, verifiedResult}) => {
 }
 `:""}
                 height="100%"
+                readOnly
                 theme={codemirrorTheme}
                 extensions={[javascript({ jsx: true })]}
                 onChange={onChange}
