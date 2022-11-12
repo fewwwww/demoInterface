@@ -63,7 +63,6 @@ const Overview = () =>{
                         <GitHubIcon/>
                         <Typography>Uniswap/uniswap-v2-subgraph</Typography>
                     </Box>
-
                 </Box>
                 <Box>
                     <Typography variant={"subtitle1"} color={"text.secondary"}>TARGET CONTRACT ADDRESS</Typography>

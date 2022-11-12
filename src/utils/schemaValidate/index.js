@@ -11,16 +11,28 @@ const obj = {
         "zkproof":"0x098ad46d8c6ddbf18a2db1ffa1f0c2b2f493cf438d645627309b16fe4933451c",
     }
 }
+export const schemaValues = (input) =>{
+    const compiledInput = JSON.parse(input.replace(/\s+/g, ''));
+    return {
+        blockhash: compiledInput.data.blockhash,
+        zkproof: compiledInput.data.zkproof,
+        price: compiledInput.data.graphdata.price
+    }
+}
+export const validateInput = (input) => {
+    try{
+        const compiledInput = JSON.parse(input.replace(/\s+/g, ''));
+        // check data obj
+        if(!compiledInput.data) return "[Data object] is needed.";
+        if(!compiledInput.data.blocknum) return "[blocknum] is needed.";
+        if(!compiledInput.data.blockhash) return "[blockhash] is needed.";
+        if(!compiledInput.data.graphdata) return "[graphdata object] is needed.";
+        if(!compiledInput.data.graphdata.price) return "[price] is needed.";
+        if(!compiledInput.data.zkproof) return "[zkproof] is needed.";
+        return null;
+    }catch (e) {
+        return e.message
+    }
 
-const validateInput = (input) => {
-    const compiledInput = JSON.parse(schema.replace(/\s+/g, ''))
-
-    // check data obj
-    if(!compiledInput.data) return "[Data object] is needed.";
-    if(!compiledInput.data.blocknum) return "[blocknum] is needed.";
-    if(!compiledInput.data.blockhash) return "[blockhash] is needed.";
-    if(!compiledInput.data.graphdata) return "[graphdata object] is needed.";
-    if(!compiledInput.data.graphdata.price) return "[price] is needed.";
-    if(!compiledInput.data.zkproof) return "[zkproof] is needed.";
 
 }
