@@ -92,7 +92,7 @@ export default function TabSection() {
                     <Tab label="Indexers" {...a11yProps(1)} />
                     <Tab  label="zkGraphs" {...a11yProps(2)} />
                     <Tab label="Playground" {...a11yProps(3)} />
-                    <Tab label="Validation" {...a11yProps(4)} />
+                    <Tab label="Onchain-Validation" {...a11yProps(4)} />
                     {/*<Tab label="ZKMessaging" {...a11yProps(5)} />*/}
                     <Tab label="Automation" {...a11yProps(5)} />
                 </Tabs>

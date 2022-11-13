@@ -14,9 +14,12 @@ const obj = {
 export const schemaValues = (input) =>{
     const compiledInput = JSON.parse(input.replace(/\s+/g, ''));
     return {
-        blockhash: compiledInput.data.blockhash,
-        zkproof: compiledInput.data.zkproof,
-        price: compiledInput.data.graphdata.price
+        blockHash: compiledInput.data.blockhash ?? null,
+        zkProof: compiledInput.data.zkproof??null,
+        price: compiledInput.data.graphdata.price??null,
+        blockNumber: compiledInput.data.blocknum?? null,
+        contract:compiledInput.data.graphdata.contract??null,
+        decimals: compiledInput.data.graphdata.decimals??null,
     }
 }
 export const validateInput = (input) => {
