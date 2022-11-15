@@ -10,7 +10,7 @@ import {LinearProgress} from "@mui/material";
 import {schemaValues, validateInput} from "../../../../utils/schemaValidate";
 import Typography from "@mui/material/Typography";
 
-const OutputSection = ({playgroundDataGetter,getIsVerifying, verifiedResult, updateData, offChainVerify}) => {
+const OutputSection = ({playgroundDataGetter,getIsVerifying, updateData, offChainVerify}) => {
     const [verifyWarning, setVerifyWarning] = useState(null);
 
     const onChange = React.useCallback((value) => {
@@ -23,12 +23,11 @@ const OutputSection = ({playgroundDataGetter,getIsVerifying, verifiedResult, upd
     }, []);
 
     const VerifyIcon = () => {
-        if(Object.keys(playgroundDataGetter).length <= 0) return <></>
-        else if(getIsVerifying) return  <Box sx={{ width: '100%' }}>
+        if(getIsVerifying) return  <Box sx={{ width: '100%' }}>
             <LinearProgress />
         </Box>
         else if(playgroundDataGetter.verificationResult === true) return <CheckCircleIcon style={{margin: "5px 5px"}}/>
-        else if(verifyWarning) return<Box sx={{display: "flex", flexDirection: "row", backgroundColor: "#9b2226"}}>
+        else if(verifyWarning) return <Box sx={{display: "flex", flexDirection: "row", backgroundColor: "#9b2226"}}>
             <Box>
                 <GavelIcon style={{margin: "5px 5px"}}/>
             </Box>

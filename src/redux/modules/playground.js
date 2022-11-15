@@ -36,6 +36,7 @@ export const actions = {
     offChainVerify: ()=>{
         return async (dispatch, getState) => {
             const blockHash = getState().entities.playground.blockHash;
+            const blockNumber = getState().entities.playground.blockNumber;
             const zkProof = getState().entities.playground.zkProof;
 
             const price = () => {
@@ -57,7 +58,7 @@ export const actions = {
                         abi,
                         provider: "https://eth-sepolia.unifra.io/v1/d52e8bdf1dd14499ad09767522a6d43b",
                         funcName: "verify",
-                        params: [priceByte, blockHash, zkProof]
+                        params: [blockHash, priceByte, zkProof]
                     },
                 }
             )
