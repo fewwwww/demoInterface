@@ -10,6 +10,7 @@ const initialState = {
     zkProof: "0x",
     price: 0,
     decimals: 3,
+    zkgState: "0x",
     contract: "UniswapV2(UNI-WETH)",
     verificationResult: "UNSENT",
 };
@@ -33,6 +34,7 @@ const reducer = (state = initialState, action) => {
                 zkProof: action.response.zkProof,
                 price: action.response.price,
                 decimals: action.response.decimals,
+                zkgState: action.response.zkgState,
                 contract:  action.response.contract,
                 verificationResult: "UNSENT",
             };
@@ -44,6 +46,7 @@ const reducer = (state = initialState, action) => {
                 zkProof: action.response.zkProof,
                 price: action.response.price,
                 decimals: action.response.decimals,
+                zkgState: action.response.zkgState,
                 contract:  action.response.contract,
                 verificationResult: "UNSENT",
             };

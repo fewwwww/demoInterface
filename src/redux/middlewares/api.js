@@ -1,6 +1,5 @@
 import { get, post } from "../../utils/request";
 import {ethers} from "ethers";
-import abi from "../../utils/zk/zkabi.json";
 
 //经过中间件处理的action所具有的标识
 export const FETCH_DATA = "FETCH_DATA";

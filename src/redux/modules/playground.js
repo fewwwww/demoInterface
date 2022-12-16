@@ -38,17 +38,7 @@ export const actions = {
             const blockHash = getState().entities.playground.blockHash;
             const blockNumber = getState().entities.playground.blockNumber;
             const zkProof = getState().entities.playground.zkProof;
-
-            const price = () => {
-                let p = getState().entities.playground.price;
-                let decimals =3;
-                while( decimals > 0){
-                    p *= 10;
-                    decimals --;
-                }
-                return parseInt(p);
-            }
-            const priceByte = uint2hexbytes32(price());
+            const zkgState = getState().entities.playground.zkgState;
 
             return await dispatch(
                 {
@@ -58,10 +48,22 @@ export const actions = {
                         abi,
                         provider: "https://eth-sepolia.unifra.io/v1/d52e8bdf1dd14499ad09767522a6d43b",
                         funcName: "verify",
-                        params: [blockHash, priceByte, zkProof]
+                        params: [blockHash, zkgState, zkProof]
                     },
                 }
             )
+            // return await dispatch(
+            //     {
+            //         [VIEW_CONTRACT]: {
+            //             types: types.OFF_CHAIN_VERIFY.all(),
+            //             contractAddress: "0x1A94E778BC3a20bF3D04D45f24ce8C6c8Eb6c316",
+            //             abi,
+            //             provider: "https://eth-sepolia.unifra.io/v1/d52e8bdf1dd14499ad09767522a6d43b",
+            //             funcName: "verify",
+            //             params: [blockNumber, blockHash, zkgState, zkProof]
+            //         },
+            //     }
+            // )
         }
     },
     pullData: ()=>{
