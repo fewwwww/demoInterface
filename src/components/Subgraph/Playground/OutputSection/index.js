@@ -10,14 +10,14 @@ import {LinearProgress} from "@mui/material";
 import {schemaValues, validateInput} from "../../../../utils/schemaValidate";
 import Typography from "@mui/material/Typography";
 
-const OutputSection = ({playgroundDataGetter,getIsVerifying, updateData, offChainVerify}) => {
+const OutputSection = ({playgroundDataGetter,getIsVerifying, updateData, offChainVerify, zkgState}) => {
     const [verifyWarning, setVerifyWarning] = useState(null);
 
     const onChange = React.useCallback((value) => {
         setVerifyWarning(null)
         setVerifyWarning(validateInput(value));
         if(!verifyWarning){
-            updateData(schemaValues(value))
+            updateData({...schemaValues(value), zkgState})
         }
 
     }, []);

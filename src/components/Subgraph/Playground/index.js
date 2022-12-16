@@ -4,10 +4,12 @@ import {Alert, Divider} from "@mui/material";
 import OutputSection from "./OutputSection";
 import SchemaSection from "./schemaSection";
 import usePlayground from "../../../hooks/aboutPlayground/usePlayground";
+import useEthStatus from "../../../hooks/aboutEthStatus/useEthStatus";
 
 const Playground = () => {
 
-    const {pullData, playgroundDataGetter, updateData, offChainVerify, getIsVerifying, getPulledData} = usePlayground()
+    const {pullData, playgroundDataGetter, updateData, offChainVerify, getIsVerifying, getPulledData} = usePlayground();
+    const {ethStatusData} = useEthStatus();
 
     const outputBorder = () => {
         if(playgroundDataGetter.verificationResult === true) return  "2px dashed #1b4813";
@@ -33,7 +35,12 @@ const Playground = () => {
                    # receive and validate your data on onchain verifier
                </Alert>
                {
-                   getPulledData && <OutputSection getIsVerifying={getIsVerifying} offChainVerify={offChainVerify} updateData={updateData} playgroundDataGetter={playgroundDataGetter}/>
+                   getPulledData && <OutputSection getIsVerifying={getIsVerifying}
+                                                   offChainVerify={offChainVerify}
+                                                   updateData={updateData}
+                                                   playgroundDataGetter={playgroundDataGetter}
+                                                   zkgState={ethStatusData.zkgState}
+                   />
 
                }
            </Box>

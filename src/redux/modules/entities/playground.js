@@ -39,6 +39,7 @@ const reducer = (state = initialState, action) => {
                 verificationResult: "UNSENT",
             };
         case types.UPDATE_DATA:
+            console.log(action)
             return {
                 ...state,
                 blockNumber: action.response.blockNumber,

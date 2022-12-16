@@ -35,11 +35,11 @@ const initialState = {
 export const actions = {
     offChainVerify: ()=>{
         return async (dispatch, getState) => {
-            const blockHash = getState().entities.playground.blockHash;
-            const blockNumber = getState().entities.playground.blockNumber;
-            const zkProof = getState().entities.playground.zkProof;
-            const zkgState = getState().entities.playground.zkgState;
-
+            const blockHash = await getState().entities.playground.blockHash;
+            const blockNumber = await getState().entities.playground.blockNumber;
+            const zkProof = await getState().entities.playground.zkProof;
+            const zkgState = await getState().entities.playground.zkgState;
+            console.log(blockHash, zkgState, zkProof)
             return await dispatch(
                 {
                     [VIEW_CONTRACT]: {
