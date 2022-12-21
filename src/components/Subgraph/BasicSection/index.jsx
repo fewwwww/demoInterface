@@ -2,13 +2,15 @@ import {Grid, Paper, styled} from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InstantBlockData from "./InstantBlockData";
+import AutomationChart from "./AutomationChart";
+import * as React from "react";
 
 
 const BasicSection = ({data}) =>{
 
     return(
         <>
-            <Grid item container direction={"col"} spacing={2} >
+            <Grid item container direction={"col"} spacing={2}>
                 <Grid md={2} lg={2} item>
                     <Box sx={{height: 160, weight: 160}}>
                         <img style={{height: "100%", weight: "100%"}} src={data.basic.logo} alt={"logo"}/>
@@ -44,8 +46,9 @@ const BasicSection = ({data}) =>{
                     </Grid>
                 </Grid>
                 <Grid md={4} lg={4} item>
-                    <Box sx={{height: 160, weight: 160}}>
-                        <InstantBlockData/>
+                    <Box sx={{width: "100%", height: 220}}>
+                        {/*<InstantBlockData/>*/}
+                        <AutomationChart/>
                     </Box>
                 </Grid>
             </Grid>

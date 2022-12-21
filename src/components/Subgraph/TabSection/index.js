@@ -10,6 +10,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import Playground from "../Playground";
 import ValidationSection from "../ValidationSection";
 import ZKMessagingSection from "../ZKMessagingSection";
+import AutomationSection from "../AutomationSection";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -116,7 +117,7 @@ export default function TabSection() {
             {/*    <ZKMessagingSection/>*/}
             {/*</TabPanel>*/}
             <TabPanel value={value} index={5}>
-               Automation developing...
+               <AutomationSection/>
             </TabPanel>
         </Box>
     );

@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import useRegularPoll from "../../../../hooks/subscriber/regularPoll";
 import useEthStatus from "../../../../hooks/aboutEthStatus/useEthStatus";
 import {FETCH_DATA} from "../../../../redux/middlewares/api";
+import AutomationChart from "../AutomationChart";
 
 const InstantBlockData = () =>{
 
