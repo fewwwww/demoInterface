@@ -11,10 +11,11 @@ import Playground from "../Playground";
 import ValidationSection from "../ValidationSection";
 import ZKMessagingSection from "../ZKMessagingSection";
 import AutomationSection from "../AutomationSection";
+import useAppTabs from "../../../hooks/aboutAppTabs/useAppTabs";
+import {TABS} from "../../../contexts/AppTabsContext";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-
     return (
         <div
             role="tabpanel"
@@ -34,8 +35,8 @@ function TabPanel(props) {
 
 TabPanel.propTypes = {
     children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
+    index: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
 };
 
 function a11yProps(index) {
@@ -79,44 +80,40 @@ const Overview = () =>{
 }
 
 export default function TabSection() {
-    const [value, setValue] = React.useState(0);
+    const {tabs, currentTab, setCurrentTab} = useAppTabs();
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        setCurrentTab(newValue);
     };
 
     return (
         <Box sx={{ width: 'auto', height: "auto" }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Overview" {...a11yProps(0)} />
-                    <Tab label="Indexers" {...a11yProps(1)} />
-                    <Tab  label="zkGraphs" {...a11yProps(2)} />
-                    <Tab label="Playground" {...a11yProps(3)} />
-                    <Tab label="Onchain-Validation" {...a11yProps(4)} />
-                    {/*<Tab label="ZKMessaging" {...a11yProps(5)} />*/}
-                    <Tab label="Automation" {...a11yProps(5)} />
+                <Tabs value={currentTab} onChange={handleChange} aria-label="basic tabs example">
+                    {tabs.map((tab)=>
+                        <Tab value={tab.value} label={tab.label} {...a11yProps(tab.value)} />
+                    )}
                 </Tabs>
             </Box>
-            <TabPanel value={value} index={0}>
+            <TabPanel value={currentTab} index={TABS.OVERVIEW}>
                 <Overview/>
             </TabPanel>
-            <TabPanel value={value} index={1}>
+            <TabPanel value={currentTab} index={TABS.INDEXERS}>
                 Indexers developing...
             </TabPanel>
-            <TabPanel value={value} index={2}>
+            <TabPanel value={currentTab} index={TABS.ZKGRAPHS}>
                 zkGraphs developing...
             </TabPanel>
-            <TabPanel value={value} index={3}>
+            <TabPanel value={currentTab} index={TABS.PLAYGROUND}>
                 <Playground/>
             </TabPanel>
-            <TabPanel value={value} index={4}>
+            <TabPanel value={currentTab} index={TABS.ONCHAINVALIDATION}>
                 <ValidationSection/>
             </TabPanel>
             {/*<TabPanel value={value} index={5}>*/}
             {/*    <ZKMessagingSection/>*/}
             {/*</TabPanel>*/}
-            <TabPanel value={value} index={5}>
+            <TabPanel value={currentTab} index={TABS.AUTOMATION}>
                <AutomationSection/>
             </TabPanel>
         </Box>

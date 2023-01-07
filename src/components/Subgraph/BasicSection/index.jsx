@@ -4,10 +4,12 @@ import Typography from "@mui/material/Typography";
 import InstantBlockData from "./InstantBlockData";
 import AutomationChart from "./AutomationChart";
 import * as React from "react";
+import useAppTabs from "../../../hooks/aboutAppTabs/useAppTabs";
+import {TABS} from "../../../contexts/AppTabsContext";
 
 
 const BasicSection = ({data}) =>{
-
+    const {currentTab} = useAppTabs();
     return(
         <>
             <Grid item container direction={"col"} spacing={2}>
@@ -47,8 +49,7 @@ const BasicSection = ({data}) =>{
                 </Grid>
                 <Grid md={4} lg={4} item>
                     <Box sx={{width: "100%", height: 220}}>
-                        {/*<InstantBlockData/>*/}
-                        <AutomationChart/>
+                        {currentTab === TABS.AUTOMATION ?  <AutomationChart/> : <InstantBlockData/>}
                     </Box>
                 </Grid>
             </Grid>

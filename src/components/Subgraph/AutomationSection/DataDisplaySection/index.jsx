@@ -28,7 +28,7 @@ const DataDisplaySection = () =>{
 
         <Stack spacing={2} sx={{ width: '100%' }}>
             {
-                data.map((each, i)=> <Alert key={i} color={each.isTriggered? "":"primary"} severity={each.isTriggered? "error" : "success"}>
+                data.map((each, i)=> <Alert key={i} color={each.isTriggered? "":"info"} severity={each.isTriggered? "success" : "info"}>
                     blockNum: {each.blockNum}  payload: {each.payload} hash: {each.hash}</Alert>)
             }
         </Stack>
