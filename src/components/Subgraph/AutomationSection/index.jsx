@@ -6,7 +6,7 @@ import {Divider} from "@mui/material";
 const AutomationSection = () =>{
 
     return <Box sx={{display: "flex", flexDirection: "row", justifyContent: 'space-between', height: "auto"}}>
-        <Box style={{width: "60%"}}>
+        <Box style={{width: "50%"}}>
             <CodeExampleSection/>
         </Box>
 

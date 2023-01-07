@@ -1,95 +1,110 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import CodeMirror from "@uiw/react-codemirror";
-import {codemirrorTheme1} from "../../../../theme/codemirrorTheme";
-import {javascript} from "@codemirror/lang-javascript";
+import useAutomation from "../../../../hooks/aboutAutomation/useAutomation";
+import {Line} from "react-chartjs-2";
+import annotationPlugin from 'chartjs-plugin-annotation';
 import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
+    CategoryScale,
+    Chart as ChartJS,
+    LinearScale,
+    LineElement,
+    PointElement, Title,
     Tooltip,
-    Legend,
-    ReferenceLine,
-    ResponsiveContainer,
-} from 'recharts';
+} from 'chart.js';
+import backgroundPlugin from "../../../../utils/chart/backgroundPlugin";
 
-const data = [
-    {
-        name: '16220644',
-        price: 226.729,
-        blockNum: 16220644
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Tooltip,
+    Title,
+    annotationPlugin, backgroundPlugin
+);
+
+
+const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        x: {
+            ticks: {
+                display: false,
+                padding: 0,
+            },
+            grid: {
+                drawBorder: false,
+                display: false,
+            },
+        },
+        y: {
+            ticks: {
+                display: false,
+                beginAtZero: true,
+                padding: 0,
+            },
+            grid: {
+                drawBorder: false,
+                display: false,
+            },
+        }
+        },
+    layout: {
+        padding: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+        },
     },
-    {
-        name: '16220645',
-        price: 227,
+    plugins: {
+        annotation: {
+            annotations: [{
+                id: "slo",
+                type: 'line',
+                mode: 'horizontal',
+                value:238,
+                scaleID: "y",
+                borderWidth: 2,
+                borderDash: [10, 5],
+                label: {
+                    enabled: true,
+                    content: `threshold: 238`,
+                    position: 'start',
+                }
+            }
+            ]
+        },
+        background: {
+            color: 'black'
+        }
     },
-    {
-        name: '16220646',
-        price: 226.2,
-    },
-    {
-        name: '16220647',
-        price: 225,
-    },
-    {
-        name: '16220648',
-        price: 225.89,
-    },
-    {
-        name: '16220649',
-        price: 225.729,
-    },
-    {
-        name: '16220650',
-        price: 227.45,
-    },
-    {
-        name: '16220647',
-        price: 225,
-    },
-    {
-        name: '16220648',
-        price: 225.89,
-    },
-    {
-        name: '16220644',
-        price: 226.729,
-    },
-];
+}
 
 const AutomationChart = () =>{
 
+    const {automationGetter} = useAutomation();
+
     return <>
-        <>
             <Box sx={{display: 'flex', flexDirection: "row", alignItems: 'center',  gap: 1}} style={{height: "20px", width: "100%", backgroundColor: "#bdc3c7", border: "5px solid #bdc3c7",
                 borderTopLeftRadius: "10px", borderTopRightRadius: "10px"}}>
                 <Box style={{height: "10px", width: "10px", backgroundColor: "#f64f59", borderRadius: "50%"}}></Box>
                 <Box style={{height: "10px", width: "10px", backgroundColor: "#FDFC47", borderRadius: "50%"}}></Box>
                 <Box style={{height: "10px", width: "10px", backgroundColor: "#24FE41", borderRadius: "50%"}}></Box>
             </Box>
-            <ResponsiveContainer width="100%" height="100%" >
-                <LineChart
-                    data={data}
-                    padding={{
-                        top: 20,
-                        right: 5,
-                        left: 5,
-                        bottom: 20,
-                    }}
-                >
-                    <XAxis hide dataKey="name" />
-                    <YAxis hide dataKey="price" domain={[223,228]}/>
-
-                    <Tooltip/>
-                    <ReferenceLine y={226} label="ThreadHold" stroke="red" />
-                    <Line type="monotone" dataKey="price" stroke="#24FE41" />
-                </LineChart>
-            </ResponsiveContainer>
+            <Line  data={{
+                labels: automationGetter.blockNum,
+                datasets: [
+                    {
+                        label: 'price',
+                        data: automationGetter.price,
+                        borderColor: '#88d109',
+                    }
+                ]
+            }} options={options}/>
             <div  style={{ borderBottom: "2.5px solid #bdc3c7", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px"}}>
             </div>
-        </>
     </>
 
 }

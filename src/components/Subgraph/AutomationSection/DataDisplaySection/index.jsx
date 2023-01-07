@@ -1,21 +1,21 @@
 import {Alert, Stack} from "@mui/material";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 
 const data_m = [
-    {blockNum: 16220645, isTriggered: false, payload: 234},
-    {blockNum: 16220646, isTriggered: false, payload: 232},
-    {blockNum: 16220647, isTriggered: true, payload: 234},
-    {blockNum: 16220648, isTriggered: true, payload: 256},
-    {blockNum: 16220649, isTriggered: false, payload: 255},
-    {blockNum: 16220650, isTriggered: true, payload: 222},
-    {blockNum: 16220645, isTriggered: false, payload: 234},
-    {blockNum: 16220646, isTriggered: false, payload: 232},
-    {blockNum: 16220647, isTriggered: true, payload: 234},
-    {blockNum: 16220648, isTriggered: true, payload: 256},
-    {blockNum: 16220649, isTriggered: false, payload: 255},
-    {blockNum: 16220650, isTriggered: true, payload: 222},
-    {blockNum: 16220650, isTriggered: true, payload: 222}
+    {blockNum: 16220645, isTriggered: false, payload: 234, hash: "0xabcd….dcba"},
+    {blockNum: 16220646, isTriggered: false, payload: 232, hash: "0xabcd….dcba"},
+    {blockNum: 16220647, isTriggered: true, payload: 234, hash: "0xabcd….dcba"},
+    {blockNum: 16220648, isTriggered: true, payload: 256, hash: "0xabcd….dcba"},
+    {blockNum: 16220649, isTriggered: false, payload: 255, hash: "0xabcd….dcba"},
+    {blockNum: 16220650, isTriggered: true, payload: 222, hash: "0xabcd….dcba"},
+    {blockNum: 16220645, isTriggered: false, payload: 234, hash: "0xabcd….dcba"},
+    {blockNum: 16220646, isTriggered: false, payload: 232, hash: "0xabcd….dcba"},
+    {blockNum: 16220647, isTriggered: true, payload: 234, hash: "0xabcd….dcba"},
+    {blockNum: 16220648, isTriggered: true, payload: 256, hash: "0xabcd….dcba"},
+    {blockNum: 16220649, isTriggered: false, payload: 255, hash: "0xabcd….dcba"},
+    {blockNum: 16220650, isTriggered: true, payload: 222, hash: "0xabcd….dcba"},
+    {blockNum: 16220650, isTriggered: true, payload: 222, hash: "0xabcd….dcba"}
 ]
 
 
@@ -29,7 +29,7 @@ const DataDisplaySection = () =>{
         <Stack spacing={2} sx={{ width: '100%' }}>
             {
                 data.map((each, i)=> <Alert key={i} color={each.isTriggered? "":"primary"} severity={each.isTriggered? "error" : "success"}>
-                    blockNum: {each.blockNum}  payload: {each.payload} </Alert>)
+                    blockNum: {each.blockNum}  payload: {each.payload} hash: {each.hash}</Alert>)
             }
         </Stack>
     </>
