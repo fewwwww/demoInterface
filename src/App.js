@@ -17,7 +17,7 @@ const theme = createCustomTheme(
 
 function App() {
 
-    useEthStatus(FETCH_DATA);
+  useEthStatus(FETCH_DATA);
 
   return (
     <div className="App">

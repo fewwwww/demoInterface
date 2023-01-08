@@ -1,8 +1,9 @@
 /***********************************************************************************************************************
  * 													SCHEMA 														   *
  * *********************************************************************************************************************/
-import {types} from "../ethStatus";
-const initialState = {price: [], blockNum: []};
+import {types as ethStatusTypes} from "../ethStatus";
+import {types as automationTypes} from "../automation";
+const initialState = {price: [], blockNum: [], threshold: 0};
 
 export const schema = {
     name: "automation",
@@ -12,17 +13,21 @@ export const schema = {
 /***********************************************************************************************************************
  * 													REDUCERS 														   *
  * *********************************************************************************************************************/
+let updatedThreshold = initialState.threshold;
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.FETCH_ETH_STATUS.success():
+        case ethStatusTypes.FETCH_ETH_STATUS.success():
             if(initialState.price.length >= 10){
                 initialState.price.shift();
                 initialState.blockNum.shift();
             }
             initialState.price.push(action.response.graphdata["price_weth-uni"])
             initialState.blockNum.push(JSON.stringify(action.response.blocknum))
-            return initialState;
+            return {...initialState, threshold: updatedThreshold};
+        case automationTypes.FETCH_AUTOMATION.success():
+            updatedThreshold =  action.response.threshold;
+            return {...initialState, threshold: updatedThreshold}
         default:
             return state;
     }
@@ -36,3 +41,7 @@ export default reducer;
 export const getAutomation = (state) => {
     return state.entities.automation;
 };
+
+export const getThreshold = (state) => {
+    return state.entities.automation.threshold;
+}
