@@ -11,7 +11,7 @@ import AutomationChart from "../AutomationChart";
 
 const InstantBlockData = () =>{
 
-    const {ethStatusData} = useEthStatus(FETCH_DATA);
+    const {ethStatusData} = useEthStatus();
 
     const onChange = React.useCallback((value, viewUpdate) => {
         // console.log('value:', value);
