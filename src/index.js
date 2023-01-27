@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider as ReduxProvider } from "react-redux";
+import { AppTabsProvider } from "./contexts/AppTabsContext";
 import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -11,7 +12,9 @@ console.log = () => {};
 root.render(
   <React.StrictMode>
       <ReduxProvider store={store}>
-        <App />
+          <AppTabsProvider>
+              <App />
+          </AppTabsProvider>
       </ReduxProvider>
   </React.StrictMode>
 );

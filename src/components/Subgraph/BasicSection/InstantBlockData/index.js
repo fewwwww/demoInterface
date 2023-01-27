@@ -7,10 +7,11 @@ import Box from "@mui/material/Box";
 import useRegularPoll from "../../../../hooks/subscriber/regularPoll";
 import useEthStatus from "../../../../hooks/aboutEthStatus/useEthStatus";
 import {FETCH_DATA} from "../../../../redux/middlewares/api";
+import AutomationChart from "../AutomationChart";
 
 const InstantBlockData = () =>{
 
-    const {ethStatusData} = useEthStatus(FETCH_DATA);
+    const {ethStatusData} = useEthStatus();
 
     const onChange = React.useCallback((value, viewUpdate) => {
         // console.log('value:', value);
@@ -31,7 +32,7 @@ const InstantBlockData = () =>{
 [+] Block Number: ${ethStatusData.blockNumber}
 [+] Block Hash: ${ethStatusData.blockHash}
 [+] zkProof: ${ethStatusData.zkProof}
-[+] Price: ${ethStatusData.price}
+[+] ETH Price in USDC: ${ethStatusData.price}
 [+] Decimals: ${ethStatusData.decimals}
 [+] Contract: ${ethStatusData.contract}
 `}

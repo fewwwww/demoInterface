@@ -11,5 +11,9 @@ export default {
     getEthStatus: () => ({
         url:"http://54.248.170.145/getcurrentprice",
         isProtected: false,
+    }),
+    getThreshold: () => ({
+        url: "http://54.248.170.145/auto/threshold",
+        isProtected: false,
     })
 };

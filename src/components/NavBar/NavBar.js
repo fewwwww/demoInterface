@@ -7,7 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Container from '@mui/material/Container';
 import Slide from '@mui/material/Slide';
-import hyperOracle from "../../assets/logos/hyperOracle.png";
+import hyperOracle from "../../assets/logos/Hyper Oracle Logo_White.svg";
 import ConnectButton from "../ConnectBtn";
 
 function HideOnScroll(props) {
@@ -39,26 +39,7 @@ export default function NavBar(props) {
                 <AppBar color={"transparent"}  elevation={0}>
                     <Container maxwidth={"lg"} sx={{mt: 2, mb:2}}>
                         <Toolbar disableGutters>
-                            <img style={{height: '40px', width: '40px'}} src={hyperOracle} alt={"hyper_oracle"}/>
-                            <Typography
-                                variant="h6"
-                                noWrap
-                                component="a"
-                                href="/"
-                                sx={{
-                                    ml: 1,
-                                    display: { xs: 'none', md: 'flex' },
-                                    fontWeight: 700,
-                                    letterSpacing: '.3rem',
-                                    color: 'inherit',
-                                    textDecoration: 'none', flexGrow: 1
-                                }}
-                            >
-                                 Hyper Oracle
-                            </Typography>
-
-                            <ConnectButton >Connect</ConnectButton>
-
+                            <img  src={hyperOracle} alt={"hyper_oracle"}/>
                         </Toolbar>
                     </Container>
                 </AppBar>

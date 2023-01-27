@@ -4,6 +4,7 @@ import entities from "./entities";
 import ethStatus from "./ethStatus";
 import zkMessaging from "./zkMessaging";
 import playground from "./playground";
+import automation from "./automation"
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     entities,
     ethStatus,
     zkMessaging,
-    playground
+    playground,
+    automation
 });
 
 

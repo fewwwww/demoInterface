@@ -1,10 +1,11 @@
-import NavBar from "./components/NavBar/NavBar";
 import {ThemeProvider} from "@mui/material";
 import {createCustomTheme} from "./theme";
 import { THEMES } from "./theme/constants";
-import Box from "@mui/material/Box";
 import MainLayout from "./layout";
 import Subgraph from "./pages/Subgraph";
+import useEthStatus from "./hooks/aboutEthStatus/useEthStatus";
+import {FETCH_DATA} from "./redux/middlewares/api";
+
 const theme = createCustomTheme(
     {
         direction: "ltr",
@@ -15,6 +16,9 @@ const theme = createCustomTheme(
 )
 
 function App() {
+
+  useEthStatus(FETCH_DATA);
+
   return (
     <div className="App">
         <ThemeProvider theme={theme}>

@@ -2,13 +2,17 @@ import {Grid, Paper, styled} from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InstantBlockData from "./InstantBlockData";
+import AutomationChart from "./AutomationChart";
+import * as React from "react";
+import useAppTabs from "../../../hooks/aboutAppTabs/useAppTabs";
+import {TABS} from "../../../contexts/AppTabsContext";
 
 
 const BasicSection = ({data}) =>{
-
+    const {currentTab} = useAppTabs();
     return(
         <>
-            <Grid item container direction={"col"} spacing={2} >
+            <Grid item container direction={"col"} spacing={2}>
                 <Grid md={2} lg={2} item>
                     <Box sx={{height: 160, weight: 160}}>
                         <img style={{height: "100%", weight: "100%"}} src={data.basic.logo} alt={"logo"}/>
@@ -35,7 +39,7 @@ const BasicSection = ({data}) =>{
                         </Grid>
                         <Grid item>
                                 <Typography variant={"h7"}  color={"text.secondary"}>TARGET CONTRACT ADDRESS</Typography>
-                                <Typography>0xd3d2e2-33a17</Typography>
+                                <Typography>0xb4e16d-8c9dc</Typography>
                         </Grid>
                         <Grid item>
                                 <Typography variant={"h7"}  color={"text.secondary"}>ZK VERIFIER CONTRACT ADDRESS</Typography>
@@ -44,8 +48,8 @@ const BasicSection = ({data}) =>{
                     </Grid>
                 </Grid>
                 <Grid md={4} lg={4} item>
-                    <Box sx={{height: 160, weight: 160}}>
-                        <InstantBlockData/>
+                    <Box sx={{width: "100%", height: 220}}>
+                        {currentTab === TABS.AUTOMATION ?  <AutomationChart/> : <InstantBlockData/>}
                     </Box>
                 </Grid>
             </Grid>

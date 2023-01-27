@@ -52,18 +52,6 @@ export const actions = {
                     },
                 }
             )
-            // return await dispatch(
-            //     {
-            //         [VIEW_CONTRACT]: {
-            //             types: types.OFF_CHAIN_VERIFY.all(),
-            //             contractAddress: "0x1A94E778BC3a20bF3D04D45f24ce8C6c8Eb6c316",
-            //             abi,
-            //             provider: "https://eth-sepolia.unifra.io/v1/d52e8bdf1dd14499ad09767522a6d43b",
-            //             funcName: "verify",
-            //             params: [blockNumber, blockHash, zkgState, zkProof]
-            //         },
-            //     }
-            // )
         }
     },
     pullData: ()=>{
