@@ -16,14 +16,14 @@ const useAutomation = (action) => {
     const fetchThreshold = async () => await automationDispatcher.loadThreshold();
 
     useEffect(() => {
-        if (mounted.current && action === types.FETCH_AUTOMATION.request()) {
-            fetchThreshold()
+        if (mounted.current && action) {
+            if(action.includes(types.FETCH_AUTOMATION.request())) fetchThreshold();
         }
     }, [])
 
     return {
         automationGetter: useSelector((state) => getAutomation(state)),
-        thresholdGetter: useSelector((state) => getThreshold(state))
+        thresholdGetter: useSelector((state) => getThreshold(state)),
     }
 }
 

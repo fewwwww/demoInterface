@@ -1,38 +1,22 @@
+import {memo} from "react";
 import {Alert, Stack} from "@mui/material";
-import {useState} from "react";
-
-
-const data_m = [
-    {blockNum: 16220645, isTriggered: false, payload: 234, hash: "0xabcd….dcba"},
-    {blockNum: 16220646, isTriggered: false, payload: 232, hash: "0xabcd….dcba"},
-    {blockNum: 16220647, isTriggered: true, payload: 234, hash: "0xabcd….dcba"},
-    {blockNum: 16220648, isTriggered: true, payload: 256, hash: "0xabcd….dcba"},
-    {blockNum: 16220649, isTriggered: false, payload: 255, hash: "0xabcd….dcba"},
-    {blockNum: 16220650, isTriggered: true, payload: 222, hash: "0xabcd….dcba"},
-    {blockNum: 16220645, isTriggered: false, payload: 234, hash: "0xabcd….dcba"},
-    {blockNum: 16220646, isTriggered: false, payload: 232, hash: "0xabcd….dcba"},
-    {blockNum: 16220647, isTriggered: true, payload: 234, hash: "0xabcd….dcba"},
-    {blockNum: 16220648, isTriggered: true, payload: 256, hash: "0xabcd….dcba"},
-    {blockNum: 16220649, isTriggered: false, payload: 255, hash: "0xabcd….dcba"},
-    {blockNum: 16220650, isTriggered: true, payload: 222, hash: "0xabcd….dcba"},
-    {blockNum: 16220650, isTriggered: true, payload: 222, hash: "0xabcd….dcba"}
-]
-
+import useAutomationSubscriber from "../../../../hooks/aboutAutomation/useAutomationSubscriber";
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 const DataDisplaySection = () =>{
 
-    const [data, setData] = useState([...data_m])
+    const [parent, enableAnimations] = useAutoAnimate()
+    const {automationSubscriptionDataGetter} = useAutomationSubscriber();
 
-
-    return <>
-
-        <Stack spacing={2} sx={{ width: '100%' }}>
+    return <Stack spacing={2} sx={{ width: '100%' }} style={{height: "800px", overflow: "scroll"}} ref={parent}>
             {
-                data.map((each, i)=> <Alert key={i} color={each.isTriggered? "":"info"} severity={each.isTriggered? "success" : "info"}>
-                    blockNum: {each.blockNum}  payload: {each.payload} hash: {each.hash}</Alert>)
+                automationSubscriptionDataGetter.map((each, i)=> <Alert key={i} color={each.isTriggered? "":"info"} severity={each.isTriggered? "success" : "info"}>
+                    blockNum: {each.event.blockNumber+" "}
+                    payload: {each.payload.slice(0, 8)+"..."+each.payload.slice( -4)+" "}
+                    blockHash: {each.event.blockHash.slice(0, 8)+"..."+each.event.blockHash.slice( -4)}
+                </Alert>)
             }
         </Stack>
-    </>
 }
 
-export default DataDisplaySection;
+export default memo(DataDisplaySection);

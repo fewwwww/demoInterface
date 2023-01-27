@@ -32,7 +32,7 @@ const InstantBlockData = () =>{
 [+] Block Number: ${ethStatusData.blockNumber}
 [+] Block Hash: ${ethStatusData.blockHash}
 [+] zkProof: ${ethStatusData.zkProof}
-[+] Price: ${ethStatusData.price}
+[+] ETH Price in USDC: ${ethStatusData.price}
 [+] Decimals: ${ethStatusData.decimals}
 [+] Contract: ${ethStatusData.contract}
 `}

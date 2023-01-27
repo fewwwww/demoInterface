@@ -27,8 +27,7 @@ ChartJS.register(
 
 const AutomationChart = () =>{
 
-    const {automationGetter} = useAutomation();
-    const {thresholdGetter} = useAutomation(types.FETCH_AUTOMATION.request());
+    const {thresholdGetter, automationGetter} = useAutomation([types.FETCH_AUTOMATION.request()]);
 
     const options = {
         responsive: true,

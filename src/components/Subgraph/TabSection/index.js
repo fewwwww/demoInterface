@@ -68,7 +68,7 @@ const Overview = () =>{
                 </Box>
                 <Box>
                     <Typography variant={"subtitle1"} color={"text.secondary"}>TARGET CONTRACT ADDRESS</Typography>
-                    <Typography >0xd3d2e2692501a5c9ca623199d38826e513033a17</Typography>
+                    <Typography >0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc</Typography>
                 </Box>
                 <Box>
                     <Typography variant={"subtitle1"} color={"text.secondary"}>ZK VERIFIER CONTRACT ADDRESS</Typography>

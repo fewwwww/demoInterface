@@ -39,7 +39,7 @@ const BasicSection = ({data}) =>{
                         </Grid>
                         <Grid item>
                                 <Typography variant={"h7"}  color={"text.secondary"}>TARGET CONTRACT ADDRESS</Typography>
-                                <Typography>0xd3d2e2-33a17</Typography>
+                                <Typography>0xb4e16d-8c9dc</Typography>
                         </Grid>
                         <Grid item>
                                 <Typography variant={"h7"}  color={"text.secondary"}>ZK VERIFIER CONTRACT ADDRESS</Typography>

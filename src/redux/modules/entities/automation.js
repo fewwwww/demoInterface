@@ -3,7 +3,7 @@
  * *********************************************************************************************************************/
 import {types as ethStatusTypes} from "../ethStatus";
 import {types as automationTypes} from "../automation";
-const initialState = {price: [], blockNum: [], threshold: 0};
+const initialState = {price: [], blockNum: [], threshold: 0, subscription: []};
 
 export const schema = {
     name: "automation",
@@ -28,6 +28,10 @@ const reducer = (state = initialState, action) => {
         case automationTypes.FETCH_AUTOMATION.success():
             updatedThreshold =  action.response.threshold;
             return {...initialState, threshold: updatedThreshold}
+        case automationTypes.AUTOMATION_SUBSCRIBER.success():
+            console.log(action);
+            initialState.subscription.unshift(action.payload)
+            return {...initialState, threshold: updatedThreshold};
         default:
             return state;
     }
@@ -44,4 +48,8 @@ export const getAutomation = (state) => {
 
 export const getThreshold = (state) => {
     return state.entities.automation.threshold;
+}
+
+export const getAutomationSubscriptionData = (state) => {
+    return state.entities.automation.subscription;
 }

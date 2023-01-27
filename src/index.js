@@ -8,7 +8,7 @@ import { AppTabsProvider } from "./contexts/AppTabsContext";
 import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log = () => {};
+// console.log = () => {};
 root.render(
   <React.StrictMode>
       <ReduxProvider store={store}>
