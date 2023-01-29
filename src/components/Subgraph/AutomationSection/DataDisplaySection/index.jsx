@@ -1,4 +1,3 @@
-import {memo} from "react";
 import {Alert, Stack} from "@mui/material";
 import useAutomationSubscriber from "../../../../hooks/aboutAutomation/useAutomationSubscriber";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
@@ -19,4 +18,4 @@ const DataDisplaySection = () =>{
         </Stack>
 }
 
-export default memo(DataDisplaySection);
+export default DataDisplaySection;
