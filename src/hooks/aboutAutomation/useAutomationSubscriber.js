@@ -18,11 +18,11 @@ const useAutomationSubscriber = () =>{
 
     useEffect(() => {
         const subscribeAutomation = async () => await automationDispatcher.subscribeAutomation();
-        if(!isSubscriptionOn && mounted){
+        if(!isSubscriptionOn && mounted.current){
             subscribeAutomation()
         }
         // return () => AutomationSubscriptionCanceller()
-    }, [])
+    }, [mounted])
 
 
     return {
