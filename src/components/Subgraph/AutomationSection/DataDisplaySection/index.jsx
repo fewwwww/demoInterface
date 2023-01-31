@@ -12,7 +12,7 @@ const DataDisplaySection = () =>{
                 automationSubscriptionDataGetter.map((each, i)=> <Alert key={i} color={each.isTriggered? "":"info"} severity={each.isTriggered? "success" : "info"}>
                     blockNum: {each.srcBlockNum.toString()+" "}
                     payload: {each.payload.slice(0, 8)+"..."+each.payload.slice( -4)+" "}
-                    blockHash: {each.event.blockHash.slice(0, 8)+"..."+each.event.blockHash.slice( -4)}
+                    blockHash: {each.blockhash.slice(0, 8)+"..."+each.event.blockHash.slice( -4)}
                 </Alert>)
             }
         </Stack>

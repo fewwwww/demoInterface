@@ -1,12 +1,34 @@
 [
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_target",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_verifier",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
     "anonymous": false,
     "inputs": [
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "srcBlockNum",
+        "name": "blockNumber",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "blockHash",
+        "type": "bytes32"
       },
       {
         "indexed": false,
@@ -34,23 +56,18 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "srcBlockNum",
+        "name": "blockNumber",
         "type": "uint256"
       },
       {
-        "internalType": "address",
-        "name": "target",
-        "type": "address"
+        "internalType": "bytes32",
+        "name": "blockHash",
+        "type": "bytes32"
       },
       {
-        "internalType": "bytes",
-        "name": "payload",
-        "type": "bytes"
-      },
-      {
-        "internalType": "bool",
-        "name": "isTriggered",
-        "type": "bool"
+        "internalType": "bytes32",
+        "name": "msg",
+        "type": "bytes32"
       },
       {
         "internalType": "bytes32",
