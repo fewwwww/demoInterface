@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
             initialState.blockNum.push(JSON.stringify(action.response.blocknum))
             return {...initialState, threshold: updatedThreshold};
         case automationTypes.FETCH_AUTOMATION.success():
-            updatedThreshold =  action.response.threshold;
+            updatedThreshold =  action.response.threshold / 1000;
             return {...initialState, threshold: updatedThreshold}
         case automationTypes.AUTOMATION_SUBSCRIBER.success():
             console.log(action);

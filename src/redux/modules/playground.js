@@ -44,7 +44,7 @@ export const actions = {
                 {
                     [VIEW_CONTRACT]: {
                         types: types.OFF_CHAIN_VERIFY.all(),
-                        contractAddress: "0xe7651cd1d7C78b149f6007C59Ed59ccC42867807",
+                        contractAddress: "0x0d430614C9dec499eD95080e036F16657973F4B7",
                         abi,
                         provider: "https://eth-sepolia.unifra.io/v1/d52e8bdf1dd14499ad09767522a6d43b",
                         funcName: "verify",

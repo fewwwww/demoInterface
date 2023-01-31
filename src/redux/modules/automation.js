@@ -7,7 +7,7 @@ const abi = require("../../utils/zk/autoabi.json");
 const ethers = require('ethers');
 
 let provider = new ethers.providers.JsonRpcProvider("https://rpc.sepolia.org");
-let contractAddress = "0x368fe264cCc5aD07903794179C614DE73EC20811";
+let contractAddress = "0xf8dC0eD19d7cA7796E02aC9132bcC090b037de77";
 let contract = new ethers.Contract(contractAddress, abi, provider);
 
 /***********************************************************************************************************************
@@ -56,13 +56,13 @@ export const actions = {
     },
     subscribeAutomation: ()=>{
         return async (dispatch, getState) => {
-            await contract.on("Auto", (srcBlockNum, target, payload, isTriggered, event) => {
-               return dispatch(
-                   {
-                       type: types.AUTOMATION_SUBSCRIBER.success(),
-                       payload: {srcBlockNum, target, payload, isTriggered, event}
-                   }
-               )
+            return contract.on("Auto", async (srcBlockNum, target, payload, isTriggered, event) => {
+                return await dispatch(
+                    {
+                        type: types.AUTOMATION_SUBSCRIBER.success(),
+                        payload: {srcBlockNum, target, payload, isTriggered, event}
+                    }
+                )
             });
         }
     },

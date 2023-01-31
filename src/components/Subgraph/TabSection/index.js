@@ -9,7 +9,6 @@ import LanguageIcon from '@mui/icons-material/Language';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Playground from "../Playground";
 import ValidationSection from "../ValidationSection";
-import ZKMessagingSection from "../ZKMessagingSection";
 import AutomationSection from "../AutomationSection";
 import useAppTabs from "../../../hooks/aboutAppTabs/useAppTabs";
 import {TABS} from "../../../contexts/AppTabsContext";
