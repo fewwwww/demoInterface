@@ -48,7 +48,7 @@ export const actions = {
                         abi,
                         provider: "https://eth-sepolia.unifra.io/v1/d52e8bdf1dd14499ad09767522a6d43b",
                         funcName: "verify",
-                        params: [blockHash, zkgState, zkProof]
+                        params: [blockNumber, blockHash, zkgState, zkProof]
                     },
                 }
             )

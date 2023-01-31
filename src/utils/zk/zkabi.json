@@ -107,6 +107,11 @@
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "blockNumber",
+        "type": "uint256"
+      },
+      {
         "internalType": "bytes32",
         "name": "blockHash",
         "type": "bytes32"
