@@ -56,13 +56,13 @@ export const actions = {
     },
     subscribeAutomation: ()=>{
         return async (dispatch, getState) => {
-            await contract.on("Auto", (srcBlockNum, target, payload, isTriggered, event) => {
-               return dispatch(
-                   {
-                       type: types.AUTOMATION_SUBSCRIBER.success(),
-                       payload: {srcBlockNum, target, payload, isTriggered, event}
-                   }
-               )
+            return contract.on("Auto", async (srcBlockNum, target, payload, isTriggered, event) => {
+                return await dispatch(
+                    {
+                        type: types.AUTOMATION_SUBSCRIBER.success(),
+                        payload: {srcBlockNum, target, payload, isTriggered, event}
+                    }
+                )
             });
         }
     },
