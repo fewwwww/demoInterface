@@ -39,7 +39,16 @@ export const actions = {
             const blockNumber = await getState().entities.playground.blockNumber;
             const zkProof = await getState().entities.playground.zkProof;
             const zkgState = await getState().entities.playground.zkgState;
-            console.log(blockHash, zkgState, zkProof)
+            const price = await getState().entities.playground.price * 1000;
+
+            console.log(blockHash, zkgState, zkProof, uint2hexbytes32(price))
+            if(uint2hexbytes32(price) !== zkgState) return await dispatch(
+                {
+                    type: types.OFF_CHAIN_VERIFY.failure(),
+                    message: "Validation failed!",
+                    error: "Validation failed!",
+                }
+            )
             return await dispatch(
                 {
                     [VIEW_CONTRACT]: {
@@ -81,7 +90,7 @@ export const actions = {
  * *********************************************************************************************************************/
 const data = (state = initialState, action) => {
     switch (action.type) {
-        case  types.OFF_CHAIN_VERIFY.request():
+        case types.OFF_CHAIN_VERIFY.request():
             return {...state, isVerifying: true}
         case types.OFF_CHAIN_VERIFY.success():
             return {...state, isVerifying: false}
