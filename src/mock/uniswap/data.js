@@ -1,4 +1,4 @@
-import uniswapLogo from "../../assets/logos/unisawp.jpeg";
+import uniswapLogo from "../../assets/logos/uniswap.jpeg";
 const data = {
     basic: {
         logo: uniswapLogo,
