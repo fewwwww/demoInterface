@@ -9,11 +9,11 @@ export const baseUrl = () => {
 
 export default {
     getEthStatus: () => ({
-        url:"http://54.248.170.145/getcurrentprice",
+        url:"https://node.hyperoracle.io/getcurrentprice",
         isProtected: false,
     }),
     getThreshold: () => ({
-        url: "http://54.248.170.145/auto/threshold",
+        url: "https://node.hyperoracle.io/auto/threshold",
         isProtected: false,
     })
 };
