@@ -1,4 +1,4 @@
-import uniswapLogo from "../../assets/logos/unisawp.jpeg";
+const uniswapLogo = require("../../assets/logos/unisawp.jpeg");
 const data = {
     basic: {
         logo: uniswapLogo,
